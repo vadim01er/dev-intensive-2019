@@ -13,4 +13,6 @@ class ImageMessage(id:String,
     override fun formatMessage(): String ="id: $id ${from?.firstName}" +
             " ${if (isIncoming) "Получил" else "Отправил"} изображение \"$image\" ${date.humanizeDiff()}"
 
+
+
 }
