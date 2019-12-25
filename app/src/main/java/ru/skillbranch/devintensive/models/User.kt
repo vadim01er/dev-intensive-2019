@@ -12,6 +12,7 @@ data class User (val id: String,
             val lastVisit: Date? = null,
             val isOnline: Boolean = false
     ) {
+
     constructor(id: String, firstName: String?, lastName: String?) : this(
         id = id,
         firstName = firstName,
@@ -19,7 +20,8 @@ data class User (val id: String,
         avatar = null
     )
 
-    constructor(id: String) : this(id, "John", "Doe")
+    constructor(builder: Builder) : this(builder.id, builder.firstName, builder.lastName, builder.avatar,
+        builder.rating, builder.respect, builder.lastVisit, builder.isOnline)
 
     init {
         println("It's Alive!!!\n${if (lastName == "Doe") "His name id $firstName $lastName\n" else "And his name is $firstName $lastName!!!"}\n")
@@ -45,5 +47,41 @@ data class User (val id: String,
 
             return User(id ="$lastId", firstName = firstName, lastName = lastName)
         }
+    }
+
+    class Builder {
+        var id = ""
+            private set
+
+        var firstName: String? = ""
+            private set
+
+        var lastName: String? = ""
+            private set
+
+        var avatar: String? = ""
+            private set
+
+        var rating: Int = 0
+            private set
+
+        var respect: Int = 0
+            private set
+
+        var lastVisit: Date? = null
+            private set
+
+        var isOnline: Boolean = false
+            private set
+
+        fun id(id: String) = apply { this.id = id }
+        fun firstName(firstName: String?) = apply { this.firstName = firstName }
+        fun lastName(lastName: String?) = apply { this.lastName = lastName }
+        fun avatar(avatar: String?) = apply { this.avatar = avatar }
+        fun rating(rating: Int) = apply { this.rating = rating }
+        fun respect(respect: Int) = apply { this.respect = respect }
+        fun lastVisited(lastVisit: Date?) = apply { this.lastVisit = lastVisit }
+        fun isOnline(isOnline: Boolean) = apply { this.isOnline = isOnline }
+        fun build() = User(this)
     }
 }

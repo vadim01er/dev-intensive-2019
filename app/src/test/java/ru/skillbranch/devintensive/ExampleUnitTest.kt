@@ -1,14 +1,17 @@
 package ru.skillbranch.devintensive
 
-import org.junit.Test
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Test
 import ru.skillbranch.devintensive.extensions.TimeUnits
 import ru.skillbranch.devintensive.extensions.add
 import ru.skillbranch.devintensive.extensions.format
 import ru.skillbranch.devintensive.extensions.toUserView
-import ru.skillbranch.devintensive.models.*
+import ru.skillbranch.devintensive.models.BaseMessage
+import ru.skillbranch.devintensive.models.Chat
+import ru.skillbranch.devintensive.models.User
 import java.util.*
+import kotlin.math.truncate
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -80,6 +83,13 @@ class ExampleUnitTest {
 
         println(textMessage.formatMessage())
         println(imgMessage.formatMessage())
+    }
+
+
+    @Test
+    fun test_test(){
+        val user = User.Builder().id("0")
+        println("")
     }
 
 }
